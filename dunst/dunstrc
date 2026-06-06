@@ -1,0 +1,134 @@
+# Dunst Notification Daemon Configuration
+# Save to ~/.config/dunst/dunstrc
+
+[global]
+    ### Display ###
+    monitor = 0
+    follow = none
+    
+    ### Geometry ###
+    width = (250, 400)
+    height = 300
+    origin = top-right
+    offset = 10x10
+    scale = 0
+    notification_limit = 5
+    
+    ### Progress bar ###
+    progress_bar = true
+    progress_bar_height = 8
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 400
+    
+    ### Appearance ###
+    transparency = 8
+    separator_height = 2
+    padding = 12
+    horizontal_padding = 16
+    text_icon_padding = 12
+    frame_width = 2
+    frame_color = "#89b4fa"
+    gap_size = 6
+    separator_color = frame
+    sort = yes
+    
+    ### Text ###
+    font = JetBrainsMono Nerd Font 11
+    line_height = 0
+    markup = full
+    format = "<b>%s</b>\n%b"
+    alignment = left
+    vertical_alignment = center
+    show_age_threshold = 60
+    ellipsize = middle
+    ignore_newline = no
+    stack_duplicates = true
+    hide_duplicate_count = false
+    show_indicators = yes
+    
+    ### Icons ###
+    icon_position = left
+    min_icon_size = 32
+    max_icon_size = 48
+    icon_path = /usr/share/icons/Papirus-Dark/48x48/status:/usr/share/icons/Papirus-Dark/48x48/devices:/usr/share/icons/Papirus-Dark/48x48/apps
+    
+    ### History ###
+    sticky_history = yes
+    history_length = 100
+    
+    ### Misc ###
+    dmenu = /usr/bin/rofi -dmenu -p dunst:
+    browser = /usr/bin/firefox
+    always_run_script = true
+    title = Dunst
+    class = Dunst
+    corner_radius = 12
+    ignore_dbusclose = false
+    force_xwayland = false
+    force_xinerama = false
+    
+    ### Mouse ###
+    mouse_left_click = do_action, close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+# Urgency: Low
+[urgency_low]
+    background = "#1e1e2eE0"
+    foreground = "#cdd6f4"
+    frame_color = "#89b4fa80"
+    timeout = 3
+    
+# Urgency: Normal
+[urgency_normal]
+    background = "#1a1e2eF0"
+    foreground = "#cdd6f4"
+    frame_color = "#89b4fa"
+    timeout = 5
+    
+# Urgency: Critical
+[urgency_critical]
+    background = "#1e1e2eF0"
+    foreground = "#f38ba8"
+    frame_color = "#f38ba8"
+    timeout = 0
+
+# Application-specific rules
+
+[volume]
+    appname = volume
+    frame_color = "#cba6f7"
+    format = "<b>󰕾 Volume</b>\n%b"
+    timeout = 2
+
+[brightness]
+    appname = brightness
+    frame_color = "#f9e2af"
+    format = "<b>󰃠 Brightness</b>\n%b"
+    timeout = 2
+
+[battery]
+    appname = battery
+    frame_color = "#a6e3a1"
+    format = "<b>󰁹 Battery</b>\n%b"
+    
+[network]
+    appname = network
+    frame_color = "#89dceb"
+    format = "<b>󰖩 Network</b>\n%b"
+
+[spotify]
+    appname = Spotify
+    frame_color = "#a6e3a1"
+    format = "<b>󰓇 Spotify</b>\n%b"
+
+[screenshot]
+    appname = screenshot
+    frame_color = "#89b4fa"
+    format = "<b>󰹑 Screenshot</b>\n%b"
+
+[calculator]
+    appname = Calculator
+    frame_color = "#fab387"
+    format = "<b>󰃬 Calculator</b>\n%b"

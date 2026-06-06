@@ -1,0 +1,210 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 28,
+    "spacing": 6,
+    "margin-top": 4,
+    "margin-left": 2,
+    "margin-right": 2,
+    
+    "modules-left": [
+        "custom/launcher",
+        "custom/separator",
+        "hyprland/workspaces",
+        "custom/separator",
+        "hyprland/window"
+    ],
+    
+    "modules-center": [
+        "clock"
+    ],
+    
+    "modules-right": [
+        "cpu",
+        "memory",
+        "temperature",
+        "custom/separator",
+        "backlight",
+        "pulseaudio",
+        "network",
+        "bluetooth",
+        "custom/separator",
+        "battery",
+        "custom/separator",
+        "tray",
+        "custom/separator",
+        "custom/power"
+    ],
+
+
+    "custom/launcher": {
+        "format": " ", //⏣ 
+        "on-click": "wofi --show drun",
+        "tooltip": false
+    },
+
+    "custom/separator": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/separator-dot": {
+        "format": "•",
+        "tooltip": false
+    },
+
+    "custom/power": {
+        "format": "󰤆",
+        "on-click": "wlogout",
+        "tooltip": false
+    },
+
+    "custom/updates": {
+        "format": "⏣",
+        "interval": 3600,
+        "exec": "checkupdates | wc -l",
+        "exec-if": "exit 0",
+        "on-click": "kitty -e yay && flatpak update",
+        "tooltip": true,
+        "tooltip-format": "{} updates available"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}"},
+        "on-click": "activate",
+        "all-outputs": true,
+        "persistent-workspaces": {
+            "*": 5
+        },
+
+    "hyprland/window": {
+        "format": "{}",
+        "max-length": 50,
+        "separate-outputs": true,
+        "rewrite": {
+            "": "Desktop"
+        }
+    },
+
+    "clock": {
+        "interval": 60,
+        "format-alt": "{:%H:%M}",
+        "format": "{:%A, %B %d, %Y - %H:%M}",
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>"
+    },
+
+    "cpu": {
+        "format": "󰍛 {usage}%",
+        "interval": 2,
+        "on-click": "kitty -e btop",
+        "tooltip": true
+    },
+
+    "memory": {
+        "format": "🖴 {percentage}%",
+        "interval": 2,
+        "on-click": "kitty -e btop",
+        "tooltip-format": "RAM: {used:0.1f}G / {total:0.1f}G"
+    },
+
+    "temperature": {
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "critical-threshold": 80,
+        "format": "🌡 {temperatureC}°C",
+        "format-critical": "🌡 {temperatureC}°C",
+        "on-click": "kitty -e btop",
+        "interval": 2,
+        "tooltip": true
+    },
+
+    "backlight": {
+        "device": "intel_backlight",
+        "format": "☼ {percent}%",
+        "on-scroll-up": "brightnessctl set +5%",
+        "on-scroll-down": "brightnessctl set 5%-",
+        "smooth-scrolling-threshold": 1,
+        "tooltip": true
+    },
+
+    "battery": {
+        "format": "{capacity}% {icon}",
+        "format-icons": {
+            "charging": [
+                "󰢜",
+                "󰂆",
+                "󰂇",
+                "󰂈",
+                "󰢝",
+                "󰂉",
+                "󰢞",
+                "󰂊",
+                "󰂋",
+                "󰂅"
+            ],
+            "default": [
+                "󰁺",
+                "󰁻",
+                "󰁼",
+                "󰁽",
+                "󰁾",
+                "󰁿",
+                "󰂀",
+                "󰂁",
+                "󰂂",
+                "󰁹"
+            ]
+        },
+        "format-full": "Charged ",
+        "interval": 5,
+        "states": {
+            "warning": 20,
+            "critical": 10
+        }
+        },
+    
+"network": {
+    "format-wifi": "{icon} {signalStrength}%",
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤥", "󰤨"],
+    "format-ethernet": "󰀂",
+    "format-disconnected": "○ Offline",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}",
+    "tooltip-format-ethernet": "{ipaddr}",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "network_manager",
+    "interval": 2,
+    "nospacing": 1
+},
+
+
+    "bluetooth": {
+        "format": "◉",
+        "format-disabled": "○",
+        "format-connected": "◉ {num_connections}",
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+        "on-click": "blueman-manager"
+    },
+
+    "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-bluetooth": "󰂰",
+    "format-muted": "✖ Muted",
+    "tooltip-format": "Volume: {volume}%",
+    "on-click": "pavucontrol",
+    "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "scroll-step": 5,
+    "smooth-scrolling-threshold": 1,
+    "format-icons": {
+        "headphone": "",
+        "default": ["󰖀", "󰕾", ""]
+        }
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8,
+        "show-passive-items": true
+    }
+}
