@@ -8,7 +8,7 @@
 local terminal = "kitty"
 local fileManager = "kitty yazi"
 local menu = "wofi --show drun"
-local browser = "~/bin/firefox-vaapi.sh"
+local browser = "firefox"
 local mainMod = "SUPER"
 
 --------------------
@@ -32,7 +32,7 @@ hl.on("hyprland.start", function()
 		"swayidle -w timeout 1800 'hyprlock' timeout 3600 'systemctl suspend' resume 'hyprctl dispatch dpms on'"
 	)
 	hl.exec_cmd("waybar")
-	hl.exec_cmd("swaybg -i /home/muhammed/my_hypr_config/back2.png -m fill")
+	hl.exec_cmd("swaybg -i ~/my_hypr_config/back2.png -m fill")
 	hl.exec_cmd("gammastep -O 2400")
 	hl.exec_cmd("wl-paste --watch cliphist store")
 end)
